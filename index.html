@@ -5,259 +5,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zyra AI · Video Swape</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
-        }
-        body {
-            background: linear-gradient(145deg, #1a0b2e 0%, #2d1a44 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1.5rem;
-        }
-        .card {
-            max-width: 1100px;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(180, 130, 255, 0.25);
-            border-radius: 2.5rem;
-            padding: 2rem 2rem 2.5rem;
-            box-shadow: 0 25px 40px -10px rgba(0, 0, 0, 0.6);
-        }
-        h1 {
-            font-size: 3rem;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-            background: linear-gradient(120deg, #e0b0ff, #c86eff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 0.2rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        h1 small {
-            font-size: 1rem;
-            background: rgba(200, 110, 255, 0.2);
-            padding: 0.25rem 1rem;
-            border-radius: 40px;
-            color: #d9b0ff;
-            font-weight: 400;
-            letter-spacing: 0.3px;
-            border: 1px solid #a64dff55;
-        }
-        .sub {
-            color: #bda0e6;
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
-            border-left: 4px solid #a855f7;
-            padding-left: 1rem;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin: 2.5rem 0 2rem;
-        }
-        .upload-area {
-            background: #1f112f;
-            border-radius: 2rem;
-            padding: 1.8rem 1.5rem 1.8rem;
-            border: 2px dashed #a970e0;
-            transition: border 0.2s, background 0.2s;
-            text-align: center;
-        }
-        .upload-area:hover {
-            border-color: #d68eff;
-            background: #281a38;
-        }
-        .upload-icon {
-            font-size: 2.5rem;
-            filter: drop-shadow(0 0 8px #c88aff);
-            margin-bottom: 0.5rem;
-        }
-        .file-label {
-            background: #a855f7;
-            color: white;
-            padding: 0.7rem 2rem;
-            border-radius: 3rem;
-            font-weight: 500;
-            display: inline-block;
-            cursor: pointer;
-            transition: 0.2s;
-            border: 1px solid #c28aff;
-            box-shadow: 0 6px 14px #a855f770;
-            margin: 1rem 0 0.8rem;
-        }
-        .file-label:hover {
-            background: #b66aff;
-            transform: scale(1.02);
-        }
-        input[type="file"] {
-            display: none;
-        }
-        .preview-box {
-            margin-top: 1.2rem;
-            border-radius: 1.2rem;
-            overflow: hidden;
-            background: #00000030;
-            max-height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .preview-box img, .preview-box video {
-            max-width: 100%;
-            max-height: 200px;
-            border-radius: 1rem;
-            border: 2px solid #b77aff;
-        }
-        .file-name {
-            color: #cdb0ff;
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
-        }
-        .swap-btn {
-            background: #b147f0;
-            border: none;
-            color: white;
-            font-size: 2rem;
-            font-weight: 700;
-            padding: 1.2rem 2rem;
-            width: 100%;
-            border-radius: 4rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            box-shadow: 0 10px 30px #a14edf;
-            cursor: pointer;
-            transition: 0.15s;
-            border: 1px solid #ddb0ff;
-            margin: 1.5rem 0 2rem;
-        }
-        .swap-btn:disabled {
-            opacity: 0.4;
-            pointer-events: none;
-            filter: grayscale(0.6);
-        }
-        .swap-btn:hover:not(:disabled) {
-            background: #c45eff;
-            transform: scale(1.01);
-            box-shadow: 0 12px 40px #cc7aff;
-        }
-        .output-section {
-            background: #1d0e2bcc;
-            border-radius: 2rem;
-            padding: 1.8rem;
-            border: 1px solid #b36df0;
-        }
-        .output-title {
-            font-size: 1.4rem;
-            color: #e2c4ff;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .output-video {
-            width: 100%;
-            border-radius: 1.5rem;
-            background: #00000055;
-            border: 2px solid #a25df5;
-        }
-        .loading {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            color: #dbb5ff;
-            font-size: 1.3rem;
-            padding: 2rem;
-        }
-        .spinner {
-            width: 28px;
-            height: 28px;
-            border: 4px solid #b27af0;
-            border-top: 4px solid #ffd3ff;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
+        /* (keep all the styles from the previous version – same purple theme) */
+        * { box-sizing: border-box; margin: 0; font-family: 'Segoe UI', Roboto, sans-serif; }
+        body { background: linear-gradient(145deg, #1a0b2e 0%, #2d1a44 100%); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 1.5rem; }
+        .card { max-width: 1100px; width: 100%; background: rgba(255,255,255,0.05); backdrop-filter: blur(12px); border: 1px solid rgba(180,130,255,0.25); border-radius: 2.5rem; padding: 2rem; box-shadow: 0 25px 40px -10px rgba(0,0,0,0.6); }
+        h1 { font-size: 3rem; font-weight: 600; background: linear-gradient(120deg, #e0b0ff, #c86eff); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 0.2rem; display: flex; align-items: center; gap: 0.5rem; }
+        h1 small { font-size: 1rem; background: rgba(200,110,255,0.2); padding: 0.25rem 1rem; border-radius: 40px; color: #d9b0ff; border: 1px solid #a64dff55; }
+        .sub { color: #bda0e6; margin-bottom: 2rem; font-size: 1.1rem; border-left: 4px solid #a855f7; padding-left: 1rem; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2.5rem 0; }
+        .upload-area { background: #1f112f; border-radius: 2rem; padding: 1.8rem; border: 2px dashed #a970e0; transition: 0.2s; text-align: center; cursor: pointer; }
+        .upload-area.dragover { border-color: #e0b0ff; background: #2e1b42; box-shadow: 0 0 20px #b77aff; }
+        .upload-icon { font-size: 2.5rem; filter: drop-shadow(0 0 8px #c88aff); margin-bottom: 0.5rem; }
+        .file-label { background: #a855f7; color: white; padding: 0.7rem 2rem; border-radius: 3rem; font-weight: 500; display: inline-block; cursor: pointer; transition: 0.2s; border: 1px solid #c28aff; box-shadow: 0 6px 14px #a855f770; margin: 1rem 0 0.8rem; pointer-events: none; }
+        input[type="file"] { display: none; }
+        .preview-box { margin-top: 1.2rem; border-radius: 1.2rem; overflow: hidden; background: #00000030; max-height: 200px; display: flex; align-items: center; justify-content: center; }
+        .preview-box img, .preview-box video { max-width: 100%; max-height: 200px; border-radius: 1rem; border: 2px solid #b77aff; }
+        .file-name { color: #cdb0ff; font-size: 0.9rem; margin-top: 0.5rem; }
+        .swap-btn { background: #b147f0; border: none; color: white; font-size: 2rem; font-weight: 700; padding: 1.2rem; width: 100%; border-radius: 4rem; text-transform: uppercase; box-shadow: 0 10px 30px #a14edf; cursor: pointer; transition: 0.15s; border: 1px solid #ddb0ff; margin: 1.5rem 0 2rem; }
+        .swap-btn:disabled { opacity: 0.4; pointer-events: none; }
+        .swap-btn:hover:not(:disabled) { background: #c45eff; transform: scale(1.01); box-shadow: 0 12px 40px #cc7aff; }
+        .output-section { background: #1d0e2bcc; border-radius: 2rem; padding: 1.8rem; border: 1px solid #b36df0; }
+        .output-title { font-size: 1.4rem; color: #e2c4ff; margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
+        .output-video { width: 100%; border-radius: 1.5rem; background: #00000055; border: 2px solid #a25df5; }
+        .loading { display: flex; align-items: center; justify-content: center; gap: 10px; color: #dbb5ff; font-size: 1.3rem; padding: 2rem; }
+        .spinner { width: 28px; height: 28px; border: 4px solid #b27af0; border-top: 4px solid #ffd3ff; border-radius: 50%; animation: spin 1s linear infinite; }
         @keyframes spin { 0% { transform: rotate(0); } 100% { transform: rotate(360deg); } }
-        .footer-note {
-            text-align: center;
-            color: #7a5e9b;
-            margin-top: 2rem;
-            font-size: 0.9rem;
-        }
-        .error {
-            color: #ffa0b0;
-            background: #3a1e2c;
-            padding: 0.8rem;
-            border-radius: 2rem;
-        }
+        .progress-bar { width: 100%; height: 6px; background: #2e1b42; border-radius: 10px; margin: 10px 0; overflow: hidden; }
+        .progress-fill { height: 100%; background: #b77aff; width: 0%; transition: width 0.3s; }
+        .footer-note { text-align: center; color: #7a5e9b; margin-top: 2rem; font-size: 0.9rem; }
+        .error { color: #ffa0b0; background: #3a1e2c; padding: 0.8rem; border-radius: 2rem; }
+        .success-note { color: #a0ffb0; background: #1e3a2c; padding: 0.8rem; border-radius: 2rem; }
     </style>
 </head>
 <body>
     <div class="card">
-        <h1>
-            ✦ ZYRA AI
-            <small>VIDEO SWAPE</small>
-        </h1>
+        <h1>✦ ZYRA AI <small>VIDEO SWAPE</small></h1>
         <div class="sub">Swap any person in a video with a character from an image — powered by your own API.</div>
 
         <div class="grid">
-            <!-- VIDEO UPLOAD -->
             <div class="upload-area" id="videoUploadArea">
                 <div class="upload-icon">🎬</div>
                 <div style="font-size: 1.4rem; color: #e5ceff;">Original video</div>
-                <label for="videoInput" class="file-label">Choose video</label>
+                <label class="file-label">Choose or drag video</label>
                 <input type="file" id="videoInput" accept="video/*">
                 <div id="videoPreview" class="preview-box"></div>
                 <div id="videoFileName" class="file-name">No video selected</div>
             </div>
-
-            <!-- IMAGE UPLOAD (character) -->
             <div class="upload-area" id="imageUploadArea">
                 <div class="upload-icon">🖼️</div>
                 <div style="font-size: 1.4rem; color: #e5ceff;">Character image</div>
-                <label for="imageInput" class="file-label">Choose image</label>
+                <label class="file-label">Choose or drag image</label>
                 <input type="file" id="imageInput" accept="image/*">
                 <div id="imagePreview" class="preview-box"></div>
                 <div id="imageFileName" class="file-name">No image selected</div>
             </div>
         </div>
 
-        <!-- SWAP BUTTON -->
-        <button class="swap-btn" id="swapBtn"> ✦ SWAPE NOW ✦ </button>
+        <button class="swap-btn" id="swapBtn">✦ SWAPE NOW ✦</button>
+        <div id="uploadProgress" class="progress-bar" style="display: none;"><div id="progressFill" class="progress-fill"></div></div>
 
-        <!-- OUTPUT SECTION -->
         <div class="output-section">
-            <div class="output-title">
-                <span>✨ swapped result</span>
-            </div>
+            <div class="output-title">✨ swapped result</div>
             <div id="outputContainer">
                 <video id="outputVideo" class="output-video" controls autoplay loop style="display: none;"></video>
-                <div id="loadingIndicator" class="loading" style="display: none;">
-                    <div class="spinner"></div> Zyra is swapping... (may take a moment)
-                </div>
+                <div id="loadingIndicator" class="loading" style="display: none;"><div class="spinner"></div> Zyra is swapping... (may take a moment)</div>
                 <div id="errorMessage" class="error" style="display: none;"></div>
+                <div id="successMessage" class="success-note" style="display: none;"></div>
                 <div id="placeholderMsg" style="color: #9f84c0; text-align: center; padding: 2rem;">Your swapped video will appear here</div>
             </div>
         </div>
-        <div class="footer-note">API key: ZYRA-9F2K8M4T7V1X6Q3L5P0R8S2B7N4D1J6H3G9C0E5W8Y2A7U4Z1F6K9L3M5N8Q2 · custom Zyra endpoint</div>
+        <div class="footer-note">API key: <span id="apiKeyDisplay">✓ set</span> · endpoint: <span id="endpointDisplay">https://zyra-ai-api.netlify.app/.netlify/functions/swap</span></div>
     </div>
 
     <script>
         (function() {
-            // ---------- CONFIGURATION ----------
-            // 🔧 Replace with your actual Zyra AI API endpoint
-            const API_ENDPOINT = 'https://api.zyra.ai/v1/swap';   // <-- CHANGE THIS
-            const API_KEY = 'ZYRA-9F2K8M4T7V1X6Q3L5P0R8S2B7N4D1J6H3G9C0E5W8Y2A7U4Z1F6K9L3M5N8Q2';
+            // ========== CONFIGURATION – Your actual API key and endpoint ==========
+            const API_KEY = 'ZYRA-DK8P3YRL66PENLYWCPTXRGPA2YZ79Y7HBR1VEP6UP1AX1S3LZR81U0LFMJ2X7UM8';
+            // If your API endpoint is different, update this line:
+            const API_ENDPOINT = 'https://zyra-ai-api.netlify.app/.netlify/functions/swap';
+            // ========== END CONFIGURATION ==========
 
             // DOM elements
             const videoInput = document.getElementById('videoInput');
@@ -270,130 +96,145 @@
             const outputVideo = document.getElementById('outputVideo');
             const loadingIndicator = document.getElementById('loadingIndicator');
             const errorMessage = document.getElementById('errorMessage');
+            const successMessage = document.getElementById('successMessage');
             const placeholderMsg = document.getElementById('placeholderMsg');
+            const uploadProgress = document.getElementById('uploadProgress');
+            const progressFill = document.getElementById('progressFill');
+            const apiKeyDisplay = document.getElementById('apiKeyDisplay');
+            const endpointDisplay = document.getElementById('endpointDisplay');
+
+            // Show current config in footer
+            apiKeyDisplay.textContent = '✓ set';
+            endpointDisplay.textContent = API_ENDPOINT;
 
             let selectedVideo = null;
             let selectedImage = null;
 
-            // ---------- PREVIEW HANDLING ----------
+            // Drag & drop setup
+            function setupDragAndDrop(area, inputElement, isVideo) {
+                ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                    area.addEventListener(eventName, (e) => e.preventDefault(), false);
+                });
+                ['dragenter', 'dragover'].forEach(eventName => {
+                    area.addEventListener(eventName, () => area.classList.add('dragover'), false);
+                });
+                ['dragleave', 'drop'].forEach(eventName => {
+                    area.addEventListener(eventName, () => area.classList.remove('dragover'), false);
+                });
+                area.addEventListener('drop', (e) => {
+                    const file = e.dataTransfer.files[0];
+                    if (file && ((isVideo && file.type.startsWith('video/')) || (!isVideo && file.type.startsWith('image/')))) {
+                        inputElement.files = e.dataTransfer.files;
+                        inputElement.dispatchEvent(new Event('change', { bubbles: true }));
+                    } else {
+                        alert(`Please drop a valid ${isVideo ? 'video' : 'image'} file.`);
+                    }
+                });
+                area.addEventListener('click', () => inputElement.click());
+            }
+            setupDragAndDrop(document.getElementById('videoUploadArea'), videoInput, true);
+            setupDragAndDrop(document.getElementById('imageUploadArea'), imageInput, false);
+
+            // File change handlers
             videoInput.addEventListener('change', function(e) {
                 const file = e.target.files[0];
-                if (!file) {
-                    resetVideoPreview();
-                    return;
-                }
+                if (!file) { resetVideoPreview(); return; }
                 selectedVideo = file;
                 videoFileName.textContent = file.name;
-
-                // Create preview
                 const url = URL.createObjectURL(file);
                 videoPreviewDiv.innerHTML = `<video src="${url}" controls style="max-width:100%; max-height:200px; border-radius:1rem;"></video>`;
             });
 
             imageInput.addEventListener('change', function(e) {
                 const file = e.target.files[0];
-                if (!file) {
-                    resetImagePreview();
-                    return;
-                }
+                if (!file) { resetImagePreview(); return; }
                 selectedImage = file;
                 imageFileName.textContent = file.name;
-
                 const url = URL.createObjectURL(file);
                 imagePreviewDiv.innerHTML = `<img src="${url}" style="max-width:100%; max-height:200px; border-radius:1rem;">`;
             });
 
-            function resetVideoPreview() {
-                videoPreviewDiv.innerHTML = '';
-                videoFileName.textContent = 'No video selected';
-                selectedVideo = null;
-            }
+            function resetVideoPreview() { videoPreviewDiv.innerHTML = ''; videoFileName.textContent = 'No video selected'; selectedVideo = null; videoInput.value = ''; }
+            function resetImagePreview() { imagePreviewDiv.innerHTML = ''; imageFileName.textContent = 'No image selected'; selectedImage = null; imageInput.value = ''; }
 
-            function resetImagePreview() {
-                imagePreviewDiv.innerHTML = '';
-                imageFileName.textContent = 'No image selected';
-                selectedImage = null;
-            }
-
-            // ---------- SWAP ACTION ----------
+            // Swap action
             swapBtn.addEventListener('click', async function() {
-                // Hide previous output
                 outputVideo.style.display = 'none';
                 errorMessage.style.display = 'none';
+                successMessage.style.display = 'none';
                 placeholderMsg.style.display = 'none';
+                uploadProgress.style.display = 'none';
 
                 if (!selectedVideo || !selectedImage) {
                     showError('Please select both a video and an image.');
                     return;
                 }
 
-                // Prepare form data
                 const formData = new FormData();
                 formData.append('video', selectedVideo);
                 formData.append('image', selectedImage);
-                // If your API expects additional fields (like model, strength), add them here
-                // formData.append('option', 'value');
 
-                // Show loading, disable button
                 loadingIndicator.style.display = 'flex';
                 swapBtn.disabled = true;
+                uploadProgress.style.display = 'block';
+                progressFill.style.width = '0%';
+
+                const xhr = new XMLHttpRequest();
 
                 try {
-                    const response = await fetch(API_ENDPOINT, {
-                        method: 'POST',
-                        headers: {
-                            // Common patterns for API keys – adjust to your backend!
-                            'X-API-Key': API_KEY,
-                            // 'Authorization': `Bearer ${API_KEY}`,   // alternative
-                        },
-                        body: formData
+                    const response = await new Promise((resolve, reject) => {
+                        xhr.open('POST', API_ENDPOINT);
+                        xhr.setRequestHeader('X-API-Key', API_KEY); // Adjust if your API expects a different header
+                        // If your API uses 'Authorization: Bearer <key>', replace the line above with:
+                        // xhr.setRequestHeader('Authorization', 'Bearer ' + API_KEY);
+
+                        xhr.upload.addEventListener('progress', (e) => {
+                            if (e.lengthComputable) {
+                                progressFill.style.width = (e.loaded / e.total * 100) + '%';
+                            }
+                        });
+
+                        xhr.onload = () => {
+                            if (xhr.status >= 200 && xhr.status < 300) resolve(xhr);
+                            else reject(new Error(`HTTP ${xhr.status}: ${xhr.statusText}`));
+                        };
+                        xhr.onerror = () => reject(new Error('Network error – check CORS'));
+                        xhr.send(formData);
                     });
 
-                    if (!response.ok) {
-                        let errorText = await response.text();
-                        throw new Error(`API error (${response.status}): ${errorText}`);
-                    }
-
-                    // --- Process response ---
-                    // We assume the API returns the video file directly (video/mp4) 
-                    // OR a JSON with a "videoUrl" field. Adjust as needed.
-                    const contentType = response.headers.get('content-type');
-                    
+                    const contentType = response.getResponseHeader('content-type') || '';
                     let videoBlob;
-                    if (contentType && contentType.includes('application/json')) {
-                        // If JSON, expect { videoUrl: "https://..." } or { output: "base64" } 
-                        const json = await response.json();
+
+                    if (contentType.includes('application/json')) {
+                        const json = JSON.parse(response.responseText);
                         if (json.videoUrl) {
-                            // fetch that URL as blob (or set video src directly if it's an absolute URL)
-                            const videoResponse = await fetch(json.videoUrl);
-                            videoBlob = await videoResponse.blob();
+                            const videoResp = await fetch(json.videoUrl);
+                            videoBlob = await videoResp.blob();
                         } else if (json.output) {
-                            // base64 encoded video?
-                            const byteString = atob(json.output.split(',')[1] || json.output);
-                            const arrayBuffer = new ArrayBuffer(byteString.length);
-                            const uint8 = new Uint8Array(arrayBuffer);
-                            for (let i = 0; i < byteString.length; i++) {
-                                uint8[i] = byteString.charCodeAt(i);
-                            }
-                            videoBlob = new Blob([arrayBuffer], { type: 'video/mp4' });
+                            const base64 = json.output.split(',').pop() || json.output;
+                            const binary = atob(base64);
+                            const array = new Uint8Array(binary.length);
+                            for (let i = 0; i < binary.length; i++) array[i] = binary.charCodeAt(i);
+                            videoBlob = new Blob([array], { type: 'video/mp4' });
                         } else {
-                            throw new Error('Unexpected JSON response: no videoUrl or output field');
+                            throw new Error('Unexpected JSON response');
                         }
                     } else {
-                        // Assume direct video file
-                        videoBlob = await response.blob();
+                        videoBlob = new Blob([response.response], { type: contentType });
                     }
 
-                    // Display the video
                     const videoUrl = URL.createObjectURL(videoBlob);
                     outputVideo.src = videoUrl;
                     outputVideo.style.display = 'block';
                     placeholderMsg.style.display = 'none';
+                    successMessage.style.display = 'block';
+                    successMessage.textContent = '✅ Swap successful! Playing your video.';
                 } catch (err) {
                     showError(err.message);
                 } finally {
                     loadingIndicator.style.display = 'none';
                     swapBtn.disabled = false;
+                    uploadProgress.style.display = 'none';
                 }
             });
 
@@ -403,8 +244,6 @@
                 placeholderMsg.style.display = 'none';
                 outputVideo.style.display = 'none';
             }
-
-            // Minor UX: drag & drop not implemented but can be added later
         })();
     </script>
 </body>
