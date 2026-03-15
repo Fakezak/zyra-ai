@@ -1,0 +1,8 @@
+{
+  "name": "zyra-video-swape",
+  "version": "1.0.0",
+  "description": "Zyra AI Video Swape with proxy function",
+  "dependencies": {
+    "node-fetch": "^2.6.7"
+  }
+}
